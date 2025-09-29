@@ -27,7 +27,7 @@ export function Header() {
   }, []);
 
   return (
-    <header className="bg-gray-800 text-white p-4 shadow-md">
+    <header className="bg-gray-800/95 backdrop-blur-sm text-white p-4 shadow-lg relative z-10">
       <nav className="container mx-auto flex justify-between items-center">
         <Link href="/" className="text-xl font-bold hover:text-gray-300">
           Home

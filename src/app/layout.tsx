@@ -23,11 +23,11 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
 	return (
 		<html lang="en" className={`${geist.variable}`}>
-			<body className={`font-sans ${geist.variable}`}>
+			<body className={`font-sans ${geist.variable} min-h-screen`}>
 				<TRPCReactProvider>
 					<AuthProvider>
 						<Header />
-						<main className="container mx-auto p-4">{children}</main>
+						<main className="flex-1">{children}</main>
 					</AuthProvider>
 				</TRPCReactProvider>
 			</body>

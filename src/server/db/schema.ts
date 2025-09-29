@@ -24,3 +24,20 @@ import { relations } from "drizzle-orm"; // relations é a argamassa que conecta
  *
  * @see https://orm.drizzle.team/docs/goodies#multi-project-schema
  */
+
+export const posts = sqliteTable(
+	"post",
+	{
+		id: integer("id", { mode: "number" }).primaryKey({ autoIncrement: true }),
+		name: text("name", { length: 256 }),
+		createdAt: integer("created_at", { mode: "timestamp" })
+			.default(sql`(unixepoch())`)
+			.notNull(),
+		updatedAt: integer("updated_at", { mode: "timestamp" }).$onUpdate(
+			() => new Date(),
+		),
+	},
+	(example) => ({
+		nameIndex: index("name_idx").on(example.name),
+	}),
+);

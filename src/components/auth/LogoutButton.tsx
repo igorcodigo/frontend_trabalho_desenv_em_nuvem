@@ -22,7 +22,7 @@ export function LogoutButton() {
 
     try {
       const response = await fetch(
-        "http://134.122.4.163:8011/contas/api/token/logout/",
+        "https://facul.subarashii.com.br/contas/api/token/logout/",
         {
           method: "POST",
           headers: {

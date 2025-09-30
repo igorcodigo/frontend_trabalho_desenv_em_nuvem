@@ -30,7 +30,7 @@ export default function TodoList() {
     }
 
     try {
-      const response = await fetch("http://134.122.4.163:8011/todolist/", {
+      const response = await fetch("https://facul.subarashii.com.br/todolist/", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -63,7 +63,7 @@ export default function TodoList() {
     }
 
     try {
-      const response = await fetch("http://134.122.4.163:8011/todolist/", {
+      const response = await fetch("https://facul.subarashii.com.br/todolist/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -94,7 +94,7 @@ export default function TodoList() {
     }
 
     try {
-      const response = await fetch(`http://134.122.4.163:8011/todolist/${id}/`, {
+      const response = await fetch(`https://facul.subarashii.com.br/todolist/${id}/`, {
         method: "PATCH",
         headers: {
           "Content-Type": "application/json",
@@ -122,7 +122,7 @@ export default function TodoList() {
     }
 
     try {
-      const response = await fetch(`http://134.122.4.163:8011/todolist/${id}/`, {
+      const response = await fetch(`https://facul.subarashii.com.br/todolist/${id}/`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

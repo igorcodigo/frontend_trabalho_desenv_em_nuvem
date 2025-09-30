@@ -30,7 +30,7 @@ export function DeleteUserButton({ userId }: DeleteUserButtonProps) {
     }
 
     try {
-      const apiUrl = `http://134.122.4.163:8011/contas/api/users/${userId}/`;
+      const apiUrl = `https://facul.subarashii.com.br/contas/api/users/${userId}/`;
 
       const response = await fetch(apiUrl, {
         method: "DELETE",

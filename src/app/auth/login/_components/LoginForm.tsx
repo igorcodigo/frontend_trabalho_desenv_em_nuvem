@@ -19,7 +19,7 @@ export function LoginForm() {
     setResponseMessage({ type: null, message: "Enviando..." });
 
     try {
-      const response = await fetch("http://134.122.4.163:8011/contas/api/token/", {
+      const response = await fetch("https://facul.subarashii.com.br/contas/api/token/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

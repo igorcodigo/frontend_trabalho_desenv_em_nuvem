@@ -38,7 +38,7 @@ export function UserProfile() {
 
       try {
         // Endpoint da sua API Python
-        const apiEndpoint = "http://134.122.4.163:8011/contas/api/me/";
+        const apiEndpoint = "https://facul.subarashii.com.br/contas/api/me/";
 
         const response = await fetch(apiEndpoint, {
           method: "GET",
@@ -106,7 +106,7 @@ export function UserProfile() {
     const accessToken = localStorage.getItem("accessToken");
 
     try {
-      const apiEndpoint = "http://134.122.4.163:8011/contas/api/me/";
+      const apiEndpoint = "https://facul.subarashii.com.br/contas/api/me/";
       const response = await fetch(apiEndpoint, {
         method: "PATCH", // Usamos PATCH para atualizações parciais
         headers: {

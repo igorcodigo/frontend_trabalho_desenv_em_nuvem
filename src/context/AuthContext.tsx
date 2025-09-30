@@ -30,7 +30,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
     if (refreshToken) {
       try {
-        await fetch("http://127.0.0.1:8011/contas/api/token/logout/", {
+        await fetch("http://134.122.4.163:8011/contas/api/token/logout/", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -62,7 +62,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
 
       try {
         const response = await fetch(
-          "http://127.0.0.1:8011/contas/api/token/verify/",
+          "http://134.122.4.163:8011/contas/api/token/verify/",
           {
             method: "POST",
             headers: {

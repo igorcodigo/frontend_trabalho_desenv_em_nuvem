@@ -22,7 +22,7 @@ export function LogoutButton() {
 
     try {
       const response = await fetch(
-        "http://127.0.0.1:8011/contas/api/token/logout/",
+        "http://134.122.4.163:8011/contas/api/token/logout/",
         {
           method: "POST",
           headers: {

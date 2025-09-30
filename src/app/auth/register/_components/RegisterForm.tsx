@@ -32,7 +32,7 @@ export function RegisterForm() {
     setResponseMessage({ type: null, message: "Enviando..." });
 
     try {
-      const response = await fetch("http://127.0.0.1:8011/contas/api/users/", {
+      const response = await fetch("http://134.122.4.163:8011/contas/api/users/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

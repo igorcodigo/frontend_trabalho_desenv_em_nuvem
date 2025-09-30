@@ -19,7 +19,7 @@ export function LoginForm() {
     setResponseMessage({ type: null, message: "Enviando..." });
 
     try {
-      const response = await fetch("http://127.0.0.1:8011/contas/api/token/", {
+      const response = await fetch("http://134.122.4.163:8011/contas/api/token/", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

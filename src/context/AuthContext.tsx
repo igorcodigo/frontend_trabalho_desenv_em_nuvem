@@ -47,6 +47,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.removeItem("accessToken");
     localStorage.removeItem("refreshToken");
     setIsAuthenticated(false);
+    
+    // Dispara um evento customizado para notificar outros componentes
+    window.dispatchEvent(new CustomEvent('authStateChanged', { 
+      detail: { isAuthenticated: false } 
+    }));
+    
     router.push("/auth/login");
   };
 
@@ -97,6 +103,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     localStorage.setItem("accessToken", accessToken);
     localStorage.setItem("refreshToken", refreshToken);
     setIsAuthenticated(true);
+    
+    // Dispara um evento customizado para notificar outros componentes
+    window.dispatchEvent(new CustomEvent('authStateChanged', { 
+      detail: { isAuthenticated: true } 
+    }));
+    
     router.push("/dashboard/profile");
   };
 

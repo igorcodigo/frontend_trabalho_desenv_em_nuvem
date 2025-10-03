@@ -1,48 +1,16 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { useAuth } from "~/context/AuthContext";
 
 export function LogoutButton() {
-  const router = useRouter();
+  const { logout } = useAuth();
   const [error, setError] = useState<string | null>(null);
 
   const handleLogout = async () => {
-    const accessToken = localStorage.getItem("accessToken");
-    const refreshToken = localStorage.getItem("refreshToken");
     setError(null);
-
-    if (!refreshToken) {
-      // Se não há refresh token, apenas limpa o storage e redireciona
-      localStorage.removeItem("accessToken");
-      localStorage.removeItem("refreshToken");
-      router.push("/auth/login");
-      return;
-    }
-
     try {
-      const response = await fetch(
-        "https://facul.subarashii.com.br/contas/api/token/logout/",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${accessToken}`,
-          },
-          body: JSON.stringify({ refresh_token: refreshToken }),
-        },
-      );
-
-      // O endpoint de logout retorna 205 No Content em sucesso
-      if (response.status === 205 || response.ok) {
-        // Limpa tokens e redireciona
-        localStorage.removeItem("accessToken");
-        localStorage.removeItem("refreshToken");
-        router.push("/auth/login");
-      } else {
-        const errorData = await response.json();
-        setError(`Falha no logout: ${JSON.stringify(errorData)}`);
-      }
+      await logout();
     } catch (err) {
       setError("Ocorreu um erro ao tentar fazer logout.");
     }

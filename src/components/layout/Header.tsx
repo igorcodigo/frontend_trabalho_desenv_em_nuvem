@@ -1,29 +1,25 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import { LogoutButton } from "../auth/LogoutButton";
+import { useAuth } from "~/context/AuthContext";
 
 export function Header() {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const { isAuthenticated } = useAuth();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [forceUpdate, setForceUpdate] = useState(0);
 
+  // Listener para eventos customizados de mudança de autenticação
   useEffect(() => {
-    // A verificação do token só pode acontecer no lado do cliente
-    const token = localStorage.getItem("accessToken");
-    setIsAuthenticated(!!token);
-
-    const handleStorageChange = () => {
-      const token = localStorage.getItem("accessToken");
-      setIsAuthenticated(!!token);
+    const handleAuthStateChange = () => {
+      setForceUpdate(prev => prev + 1);
     };
 
-    // Ouve por mudanças no localStorage para atualizar o estado (login/logout em outra aba)
-    window.addEventListener("storage", handleStorageChange);
-
-    // Limpa o event listener quando o componente é desmontado
+    window.addEventListener('authStateChanged', handleAuthStateChange);
+    
     return () => {
-      window.removeEventListener("storage", handleStorageChange);
+      window.removeEventListener('authStateChanged', handleAuthStateChange);
     };
   }, []);
 
